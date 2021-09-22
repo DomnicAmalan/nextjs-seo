@@ -1,10 +1,7 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 import Axios from 'axios';
 
 export default function Home({ data }) {
-  console.log(data)
   return (
     <>
     <Head>
@@ -15,12 +12,20 @@ export default function Home({ data }) {
     </>
   )
 }
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: 'blocking',
+  };
+}
 
-export async function getServerSideProps({ req, res }) {
-  const {data} = await Axios.get('http://localhost:3000/api/user');
+export async function getStaticProps({ params }) {
+  const {data} = await Axios.get('http://localhost:3000/api/user/1');
   return {
     props: {
       data
     },
+    revalidate: 1,
   }
 }
+
