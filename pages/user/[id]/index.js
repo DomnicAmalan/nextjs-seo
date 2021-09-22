@@ -6,7 +6,7 @@ export default function Home({ data }) {
     <>
     <Head>
       <title>{data.name}</title>
-      <meta name='description' content={data.Description} />
+      <meta name='description' content={data.desc} />
     </Head>
     <div>Dataa</div>
     </>
@@ -20,7 +20,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const {data} = await Axios.get('http://localhost:3000/api/user/1');
+  const {data} = await Axios.get(`http://localhost:3000/api/user/${params.id}`);
   return {
     props: {
       data

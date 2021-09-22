@@ -9,7 +9,7 @@ export default function Home({ data }) {
     <>
     <Head>
       <title>{data.name}</title>
-      <meta name='description' content={data.Description} />
+      <meta name='description' content={data.desc} />
     </Head>
     <div>Dataa</div>
     </>
